@@ -26,22 +26,27 @@
                     <div class="row mb-3">
                         <div class="col-6">
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="isAustralian" v-model="formData.isAustralian">
+                                <input type="checkbox" class="form-check-input" id="isAustralian" v-model="formData.isAustralian"
+                                 @change="validateResident">
+                                <div v-if="errors.resident" class="text-danger">{{ errors.resident }}</div>
                                 <label class="form-check-label" for="isAustralian">Australian Resident?</label>
                             </div>
                         </div>
                         <div class="col-6">
                             <label for="gender" class="form-label">Gender</label>
-                            <select class="form-select" id="gender" v-model="formData.gender">
+                            <select class="form-select" id="gender" v-model="formData.gender" @change="validateGender">
+                                <option value="">Select Gender</option>  
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
                                 <option value="other">Other</option>
                             </select>
+                        <div v-if="errors.gender" class="text-danger">{{ errors.gender }}</div>
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="reason" class="form-label">Reason for joining</label>
-                        <textarea class="form-control" id="reason" rows="3" v-model="formData.reason"></textarea>
+                        <textarea class="form-control" id="reason" rows="3" v-model="formData.reason" @blur="validateReason"></textarea>  <!-- 添加 @blur 事件监听 validateReason -->
+                        <div v-if="errors.reason" class="text-danger">{{ errors.reason }}</div>
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary me-2">Submit</button>
@@ -82,6 +87,9 @@
   const submitForm = () => {
     validateName(true);
     validatePassword(true)
+    validateResident(true);  
+    validateGender(true);   
+    validateReason(true);
     if (!errors.value.username && !errors.value.password) {
       submittedCards.value.push({ ...formData.value });
       clearForm();
@@ -136,6 +144,36 @@
         errors.value.password = null;
     }
   }
+  const validateResident = () => { 
+    if (formData.value.isAustralian === false) {
+        errors.value.resident = "Please confirm if you are an Australian Resident.";
+    } else {
+        errors.value.resident = null;
+    }
+  };
+
+  const validateGender = () => {
+    if (formData.value.gender === '') {
+        errors.value.gender = "Gender is required.";
+    } else {
+        errors.value.gender = null;
+    }
+  };
+
+  const validateReason = () => { 
+    if (formData.value.reason.length < 3) {
+        errors.value.reason = "Reason for joining must be at least 3 characters long.";  
+    } else if (formData.value.reason.length > 50) {
+        errors.value.reason = "Reason for joining must be no more than 50 characters long.";
+    } else {
+        errors.value.reason = null;
+    }
+ };
+
+
+
+
+
   </script>
   
   <style scoped>
