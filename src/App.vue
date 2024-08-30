@@ -1,4 +1,5 @@
 <script setup>
+<<<<<<< HEAD
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import BHeader from './components/BHeader.vue'
@@ -37,3 +38,14 @@ button {
   padding: 5px 10px;
 }
 </style>
+=======
+import JSON from './components/JSON.vue'
+import Form from './components/Form.vue'
+</script>
+
+<template>
+  <!--  <JSON />-->
+  <!--  <JSONSolution /> -->
+  <Form />
+</template>
+>>>>>>> week5
