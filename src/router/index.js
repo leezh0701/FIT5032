@@ -5,12 +5,18 @@ import AdminView from '../views/AdminView.vue'
 import UserDashboard from '../views/UserDashboard.vue'
 import FirebaseSigninView from '../views/FirebaseSigninView.vue'
 import FirebaseRegisterView from '../views/FirebaseRegisterView.vue'
+import AddBookView from '@/views/AddBookView.vue'
 
 import { auth, db } from '../firebase'
 import { doc, getDoc } from 'firebase/firestore'
 import AboutView from '@/views/AboutView.vue'
 
 const routes = [
+  {
+    path: '/addbook',
+    name: 'AddBook',
+    component: AddBookView
+  },
   {
     path: '/',
     name: 'home',
