@@ -1,4 +1,3 @@
-// router/index.js
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import AdminView from '../views/AdminView.vue'
@@ -6,21 +5,27 @@ import UserDashboard from '../views/UserDashboard.vue'
 import FirebaseSigninView from '../views/FirebaseSigninView.vue'
 import FirebaseRegisterView from '../views/FirebaseRegisterView.vue'
 import AddBookView from '@/views/AddBookView.vue'
+import BookList from '../components/BookList.vue'
+import AboutView from '@/views/AboutView.vue'
 
 import { auth, db } from '../firebase'
 import { doc, getDoc } from 'firebase/firestore'
-import AboutView from '@/views/AboutView.vue'
 
 const routes = [
+  {
+    path: '/',
+    name: 'home',
+    component: HomeView
+  },
   {
     path: '/addbook',
     name: 'AddBook',
     component: AddBookView
   },
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    path: '/booklist',
+    name: 'BookList',
+    component: BookList
   },
   {
     path: '/admin',

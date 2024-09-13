@@ -6,19 +6,40 @@
         Welcome to our digital library! We're dedicated to providing a vast collection of books and
         resources to our community.
       </p>
+      <p v-if="userEmail">You are logged in as: {{ userEmail }}</p>
       <button @click="logout" class="logout-button">Logout</button>
     </div>
   </div>
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { getAuth, signOut } from 'firebase/auth'
 
 const router = useRouter()
+const auth = getAuth()
+const userEmail = ref('')
 
-const logout = () => {
-  localStorage.removeItem('isAuthenticated')
-  router.push('/login')
+onMounted(() => {
+  const user = auth.currentUser
+  if (user) {
+    userEmail.value = user.email
+    console.log('Current user:', user)
+  } else {
+    console.log('No user is currently logged in.')
+  }
+})
+
+const logout = async () => {
+  try {
+    await signOut(auth)
+    localStorage.removeItem('isAuthenticated')
+    router.push('/login')
+    console.log('User signed out successfully.')
+  } catch (error) {
+    console.error('Error signing out:', error.message)
+  }
 }
 </script>
 

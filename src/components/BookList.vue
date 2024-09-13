@@ -1,41 +1,48 @@
 <template>
-  <div>
-    <h1>Books with ISBN > 1000</h1>
+  <div class="book-list">
+    <h2>Book List</h2>
     <ul>
-      <li v-for="book in books" :key="book.id">{{ book.name }} - ISBN: {{ book.isbn }}</li>
+      <li v-for="book in books" :key="book.id">
+        {{ book.name }} - ISBN: {{ book.isbn }}
+        <button @click="editBook(book)">Edit</button>
+        <button @click="$emit('delete', book.id)">Delete</button>
+      </li>
     </ul>
   </div>
 </template>
+
 <script>
-import { ref, onMounted } from 'vue'
-import db from '../firebase/init.js'
-import { collection, query, where, getDocs } from 'firebase/firestore'
-
 export default {
-  setup() {
-    const books = ref([])
-
-    const fetchBooks = async () => {
-      try {
-        const q = query(collection(db, 'books'), where('isbn', '>', 1000))
-        const querySnapshot = await getDocs(q)
-        const booksArray = []
-        querySnapshot.forEach((doc) => {
-          booksArray.push({ id: doc.id, ...doc.data() })
-        })
-        books.value = booksArray
-      } catch (error) {
-        console.error('Error fetching books: ', error)
-      }
+  props: {
+    books: {
+      type: Array,
+      required: true
     }
-
-    onMounted(() => {
-      fetchBooks()
-    })
-
-    return {
-      books
+  },
+  methods: {
+    editBook(book) {
+      const updatedData = { name: 'Updated Name', isbn: book.isbn + 1 } // 示例更新
+      this.$emit('update', book.id, updatedData)
     }
   }
 }
 </script>
+
+<style scoped>
+.book-list {
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin: 10px 0;
+}
+
+button {
+  margin-left: 10px;
+}
+</style>
