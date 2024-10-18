@@ -14,21 +14,15 @@ const logout = () => {
 </script>
 
 <template>
-  <div>
-    <BHeader />
+  <div class="main-container">
+    <header v-if="showHeader">
+      <BHeader />
+    </header>
     <nav>
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
       <button v-if="isAuthenticated" @click="logout">Logout</button>
     </nav>
-    <router-view></router-view>
-  </div>
-</template>
-
-  <div class="main-container">
-    <header v-if="showHeader">
-      <BHeader />
-    </header>
     <main class="main-box">
       <router-view></router-view>
     </main>
@@ -36,15 +30,8 @@ const logout = () => {
 </template>
 
 <script>
-import BHeader from './components/BHeader.vue';
-import CountBookAPI from "./views/CountBookAPI.vue";
-
 export default {
   name: 'App',
-  components: {
-    BHeader,
-    CountBookAPI
-  },
   computed: {
     showHeader() {
       return this.$route.name !== 'CountBookAPI';
