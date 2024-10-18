@@ -68,7 +68,7 @@
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(async (position) => {
             const { latitude, longitude } = position.coords;
-            const url = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apikey}`;
+            const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apikey}`;
             await this.fetchWeatherData(url);
           });
         }
@@ -83,7 +83,7 @@
       },
       async searchByCity() {
         if (this.city) {
-          const url = `http://api.openweathermap.org/data/2.5/weather?q=${this.city}&appid=${apikey}`;
+          const url = `https://api.openweathermap.org/data/2.5/weather?q=${this.city}&appid=${apikey}`;
           await this.fetchWeatherData(url);
         }
       },
