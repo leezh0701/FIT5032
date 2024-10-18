@@ -8,12 +8,27 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+<<<<<<< HEAD
     "format": "prettier --write src/"
   },
   "dependencies": {
     "@primevue/themes": "^4.0.4",
     "bootstrap": "^5.3.3",
     "firebase": "^9.23.0",
+=======
+    "format": "prettier --write src/",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@primevue/themes": "^4.0.4",
+    "axios": "^1.7.7",
+    "bootstrap": "^5.3.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.0",
+    "firebase": "^9.23.0",
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1",
+>>>>>>> 43fa898 (initial commit)
     "primevue": "^4.0.4",
     "vue": "^3.4.29",
     "vue-router": "^4.4.3"

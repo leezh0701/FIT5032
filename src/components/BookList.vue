@@ -21,7 +21,11 @@ export default {
   },
   methods: {
     editBook(book) {
+<<<<<<< HEAD
       const updatedData = { name: 'Updated Name', isbn: book.isbn + 1 } // 示例更新
+=======
+      const updatedData = { name: 'Updated Name', isbn: book.isbn + 1 }
+>>>>>>> 43fa898 (initial commit)
       this.$emit('update', book.id, updatedData)
     }
   }
