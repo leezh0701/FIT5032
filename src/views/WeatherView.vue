@@ -55,7 +55,7 @@
       // Get the current weather icon using the API link
       iconUrl() {
         return this.weatherData
-          ? `http://api.openweathermap.org/img/w/${this.weatherData.weather[0].icon}.png`
+          ? `https://api.openweathermap.org/img/w/${this.weatherData.weather[0].icon}.png`
           : null;
       },
     },
