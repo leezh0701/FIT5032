@@ -60,7 +60,7 @@
       },
     },
     mounted() {
-      this.fetchCurrentLocationWeather();
+      this.fetchCurrentLocationWeather(); // ss
     },
     methods: {
       // Fetch the weather based on the user's current location

@@ -14,7 +14,6 @@ const logout = () => {
 </script>
 
 <template>
-<<<<<<< HEAD
   <div>
     <BHeader />
     <nav>
@@ -26,7 +25,6 @@ const logout = () => {
   </div>
 </template>
 
-=======
   <div class="main-container">
     <header v-if="showHeader">
       <BHeader />
@@ -55,7 +53,6 @@ export default {
 };
 </script>
 
->>>>>>> 43fa898 (initial commit)
 <style>
 nav {
   padding: 10px;

@@ -7,21 +7,16 @@ import FirebaseRegisterView from '../views/FirebaseRegisterView.vue'
 import AddBookView from '@/views/AddBookView.vue'
 import BookList from '../components/BookList.vue'
 import AboutView from '@/views/AboutView.vue'
-<<<<<<< HEAD
-=======
 import GetBookCountView from '@/views/GetBookCountView.vue'
 import WeatherView from '@/views/WeatherView.vue'
 import CountBookAPI from '@/views/CountBookAPI.vue'
 import GetAllBookAPI from '@/views/GetAllBookAPI.vue'
->>>>>>> 43fa898 (initial commit)
 
 import { auth, db } from '../firebase'
 import { doc, getDoc } from 'firebase/firestore'
 
 const routes = [
   {
-<<<<<<< HEAD
-=======
     path: '/GetAllBookAPI',
     name: 'GetAllBookAPI',
     component: GetAllBookAPI
@@ -42,7 +37,6 @@ const routes = [
     component: GetBookCountView
   },
   {
->>>>>>> 43fa898 (initial commit)
     path: '/',
     name: 'home',
     component: HomeView
